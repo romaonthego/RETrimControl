@@ -16,6 +16,9 @@
 		3021105B16A9A9CA00F82376 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3021105A16A9A9CA00F82376 /* Default.png */; };
 		3021105D16A9A9CA00F82376 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3021105C16A9A9CA00F82376 /* Default@2x.png */; };
 		3021105F16A9A9CA00F82376 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3021105E16A9A9CA00F82376 /* Default-568h@2x.png */; };
+		3021106716A9AA7700F82376 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3021106616A9AA7700F82376 /* RootViewController.m */; };
+		3021106C16A9AA8300F82376 /* RETrimControl.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3021106916A9AA8300F82376 /* RETrimControl.bundle */; };
+		3021106D16A9AA8300F82376 /* RETrimControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3021106B16A9AA8300F82376 /* RETrimControl.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,11 @@
 		3021105A16A9A9CA00F82376 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		3021105C16A9A9CA00F82376 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		3021105E16A9A9CA00F82376 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		3021106516A9AA7700F82376 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		3021106616A9AA7700F82376 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		3021106916A9AA8300F82376 /* RETrimControl.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = RETrimControl.bundle; sourceTree = "<group>"; };
+		3021106A16A9AA8300F82376 /* RETrimControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RETrimControl.h; sourceTree = "<group>"; };
+		3021106B16A9AA8300F82376 /* RETrimControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RETrimControl.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +59,7 @@
 		3021103916A9A9C900F82376 = {
 			isa = PBXGroup;
 			children = (
+				3021106816A9AA8300F82376 /* RETrimControl */,
 				3021104E16A9A9C900F82376 /* RETrimControlExample */,
 				3021104716A9A9C900F82376 /* Frameworks */,
 				3021104516A9A9C900F82376 /* Products */,
@@ -78,9 +87,11 @@
 		3021104E16A9A9C900F82376 /* RETrimControlExample */ = {
 			isa = PBXGroup;
 			children = (
+				3021104F16A9A9C900F82376 /* Supporting Files */,
 				3021105716A9A9C900F82376 /* AppDelegate.h */,
 				3021105816A9A9C900F82376 /* AppDelegate.m */,
-				3021104F16A9A9C900F82376 /* Supporting Files */,
+				3021106516A9AA7700F82376 /* RootViewController.h */,
+				3021106616A9AA7700F82376 /* RootViewController.m */,
 			);
 			path = RETrimControlExample;
 			sourceTree = "<group>";
@@ -97,6 +108,17 @@
 				3021105E16A9A9CA00F82376 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3021106816A9AA8300F82376 /* RETrimControl */ = {
+			isa = PBXGroup;
+			children = (
+				3021106916A9AA8300F82376 /* RETrimControl.bundle */,
+				3021106A16A9AA8300F82376 /* RETrimControl.h */,
+				3021106B16A9AA8300F82376 /* RETrimControl.m */,
+			);
+			name = RETrimControl;
+			path = ../RETrimControl;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,6 +176,7 @@
 				3021105B16A9A9CA00F82376 /* Default.png in Resources */,
 				3021105D16A9A9CA00F82376 /* Default@2x.png in Resources */,
 				3021105F16A9A9CA00F82376 /* Default-568h@2x.png in Resources */,
+				3021106C16A9AA8300F82376 /* RETrimControl.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +189,8 @@
 			files = (
 				3021105516A9A9C900F82376 /* main.m in Sources */,
 				3021105916A9A9C900F82376 /* AppDelegate.m in Sources */,
+				3021106716A9AA7700F82376 /* RootViewController.m in Sources */,
+				3021106D16A9AA8300F82376 /* RETrimControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +264,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RETrimControlExample/RETrimControlExample-Prefix.pch";
 				INFOPLIST_FILE = "RETrimControlExample/RETrimControlExample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -250,6 +276,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RETrimControlExample/RETrimControlExample-Prefix.pch";
 				INFOPLIST_FILE = "RETrimControlExample/RETrimControlExample-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
