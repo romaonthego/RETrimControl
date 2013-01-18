@@ -16,6 +16,8 @@ If you are not using ARC in your project, add `-fobjc-arc` as a compiler flag fo
 
 Build and run the `RETrimControlExample` project in Xcode to see `RETrimControl` in action.
 
+## Installation
+
 ### via CocoaPods
 
 The recommended approach for installating RETrimControl is via the [CocoaPods](http://cocoapods.org/) package manager, as it provides flexible dependency management and dead simple installation.
