@@ -1,8 +1,8 @@
 # RETrimControl
 
-Description
+Audio trim control, similar to the one seen in default iPhone Voice Memos app.
 
-![Screenshot of REComposeViewController](https://github.com/romaonthego/RETrimControl/raw/master/Screenshot.png "RETrimControl Screenshot")
+![Screenshot of RETrimControl](https://github.com/romaonthego/RETrimControl/raw/master/Screenshot.png "RETrimControl Screenshot")
 
 ## Requirements
 * Xcode 4.5 or higher
@@ -16,13 +16,58 @@ If you are not using ARC in your project, add `-fobjc-arc` as a compiler flag fo
 
 Build and run the `RETrimControlExample` project in Xcode to see `RETrimControl` in action.
 
-## Installation
+### via CocoaPods
 
-TO DO
+The recommended approach for installating RETrimControl is via the [CocoaPods](http://cocoapods.org/) package manager, as it provides flexible dependency management and dead simple installation.
+
+Install CocoaPods if not already available:
+
+``` bash
+$ [sudo] gem install cocoapods
+$ pod setup
+```
+
+Edit your Podfile and add RETrimControl:
+
+``` bash
+$ edit Podfile
+platform :ios, '5.0'
+pod 'RETrimControl', '~> 1.0'
+```
+
+Install into your Xcode project:
+
+``` bash
+$ pod install
+```
+
+### Simple Install
+
+All you need to do is drop `RETrimControl` files into your project, and add `#include "RETrimControl.h"` to the top of classes that will use it.
 
 ## Example Usage
 
-TO DO
+``` objective-c
+RETrimControl *trimControl = [[RETrimControl alloc] initWithFrame:CGRectMake(10, (self.view.frame.size.height - 28) / 2.0f, 300, 28)];
+trimControl.length = 200; // 200 seconds
+trimControl.delegate = self;
+[self.view addSubview:trimControl];
+```
+
+You may want to to set your controller to conform to `RETrimControlDelegate` protocol to receive notifications when user cancels / posts.
+
+``` objective-c
+...
+trimControl.delegate = self;
+...
+```
+
+``` objective-c
+- (void)trimControl:(RETrimControl *)trimControl didChangeLeftValue:(CGFloat)leftValue rightValue:(CGFloat)rightValue
+{
+    NSLog(@"Left = %f, right = %f", leftValue, rightValue);
+}
+```
 
 ## Contact
 
