@@ -56,7 +56,7 @@ trimControl.delegate = self;
 [self.view addSubview:trimControl];
 ```
 
-You may want to to set your controller to conform to `RETrimControlDelegate` protocol to receive notifications when user cancels / posts.
+You may want to to set your controller to conform to `RETrimControlDelegate` protocol to receive notifications when values are being changed.
 
 ``` objective-c
 ...
