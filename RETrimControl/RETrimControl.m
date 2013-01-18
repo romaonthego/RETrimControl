@@ -111,9 +111,16 @@
     return [NSString stringWithFormat:@"%@:%@", minutesStr, secondsStr];
 }
 
-- (void)updateLongTimeLabel:(NSInteger)timeStart timeEnd:(NSInteger)timeEnd
+- (void)hidePopover
 {
-    _timeLabelLong.text = [NSString stringWithFormat:@"%@  —  %@", [self stringFromTime:timeStart], [self stringFromTime:timeEnd]];
+    [UIView animateWithDuration:0.3
+                          delay:0
+                        options:UIViewAnimationCurveEaseIn | UIViewAnimationOptionAllowUserInteraction
+                     animations:^(void) {
+                         _popoverView.alpha = 0;
+                         _popoverViewLong.alpha = 0;
+                     }
+                     completion:nil];
 }
 
 - (void)layoutSubviews
@@ -184,16 +191,8 @@
             [_delegate trimControl:self didChangeLeftValue:self.leftValue rightValue:self.rightValue];
     }
 
-    if (gesture.state == UIGestureRecognizerStateEnded) {
-        [UIView animateWithDuration:0.3
-                              delay:0
-                            options:UIViewAnimationCurveEaseIn | UIViewAnimationOptionAllowUserInteraction
-                         animations:^(void) {
-                             _popoverViewLong.alpha = 0;
-                         }
-                         completion:^(BOOL finished) {
-                         }];
-    }
+    if (gesture.state == UIGestureRecognizerStateEnded)
+        [self hidePopover];
 }
 
 - (void)handleLeftPan:(UIPanGestureRecognizer *)gesture
@@ -215,23 +214,14 @@
         frame.origin.x = _leftThumbView.frame.origin.x - 9;
         _popoverView.frame = frame;
 
-       // [self updateTimeLabel:_leftValue * _length / 100.0f];
         _timeLabel.text = [self stringFromTime:_leftValue * _length / 100.0f];
 
         if ([_delegate respondsToSelector:@selector(trimControl:didChangeLeftValue:rightValue:)])
             [_delegate trimControl:self didChangeLeftValue:self.leftValue rightValue:self.rightValue];
     }
 
-    if (gesture.state == UIGestureRecognizerStateEnded) {
-        [UIView animateWithDuration:0.3
-                              delay:0
-                            options:UIViewAnimationCurveEaseIn | UIViewAnimationOptionAllowUserInteraction
-                         animations:^(void) {
-                             _popoverView.alpha = 0;
-                         }
-                         completion:^(BOOL finished) {
-                         }];
-    }
+    if (gesture.state == UIGestureRecognizerStateEnded)
+        [self hidePopover];
 }
 
 - (void)handleRightPan:(UIPanGestureRecognizer *)gesture
@@ -260,16 +250,8 @@
             [_delegate trimControl:self didChangeLeftValue:self.leftValue rightValue:self.rightValue];
     }
 
-    if (gesture.state == UIGestureRecognizerStateEnded) {
-        [UIView animateWithDuration:0.3
-                              delay:0
-                            options:UIViewAnimationCurveEaseIn | UIViewAnimationOptionAllowUserInteraction
-                         animations:^(void){
-                             _popoverView.alpha = 0;
-                         }
-                         completion:^(BOOL finished){
-                         }];
-    }
+    if (gesture.state == UIGestureRecognizerStateEnded)
+        [self hidePopover];
 }
 
 - (CGFloat)leftValue
