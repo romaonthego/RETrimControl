@@ -155,8 +155,7 @@
             _leftValue = 0;
             _rightValue = diff;
 
-            [self setNeedsLayout];
-            return;
+            return [self setNeedsLayout];
         }
 
         if (_rightValue + translation.x / availableWidth * range > 100) {
@@ -164,8 +163,7 @@
             _leftValue = 100 - diff;
             _rightValue = 100;
 
-            [self setNeedsLayout];
-            return;
+            return [self setNeedsLayout];
         }
 
         _leftValue += translation.x / availableWidth * range;
@@ -176,9 +174,9 @@
         [self setNeedsLayout];
 
         _popoverViewLong.alpha = 1;
-        CGRect f = _popoverViewLong.frame;
-        f.origin.x = _leftThumbView.frame.origin.x - 34 + floor((_rightThumbView.frame.origin.x - _leftThumbView.frame.origin.x) / 2);
-        _popoverViewLong.frame = f;
+        CGRect frame = _popoverViewLong.frame;
+        frame.origin.x = _leftThumbView.frame.origin.x - 34 + floor((_rightThumbView.frame.origin.x - _leftThumbView.frame.origin.x) / 2);
+        _popoverViewLong.frame = frame;
         
         _timeLabelLong.text = [NSString stringWithFormat:@"%@  —  %@", [self stringFromTime:_leftValue * _length / 100.0f], [self stringFromTime:_rightValue * _length / 100.0f]];
 
