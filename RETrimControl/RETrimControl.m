@@ -102,27 +102,6 @@
     return self;
 }
 
-- (NSString *)stringFromTime:(NSInteger)time
-{
-    NSInteger minutes = floor(time / 60);
-    NSInteger seconds = time - minutes * 60;
-    NSString *minutesStr = [NSString stringWithFormat:minutes >= 10 ? @"%i" : @"0%i", minutes];
-    NSString *secondsStr = [NSString stringWithFormat:seconds >= 10 ? @"%i" : @"0%i", seconds];
-    return [NSString stringWithFormat:@"%@:%@", minutesStr, secondsStr];
-}
-
-- (void)hidePopover
-{
-    [UIView animateWithDuration:0.3
-                          delay:0
-                        options:UIViewAnimationCurveEaseIn | UIViewAnimationOptionAllowUserInteraction
-                     animations:^(void) {
-                         _popoverView.alpha = 0;
-                         _popoverViewLong.alpha = 0;
-                     }
-                     completion:nil];
-}
-
 - (void)layoutSubviews
 {
     CGFloat availableWidth = self.frame.size.width - RANGESLIDER_THUMB_SIZE;
@@ -149,11 +128,13 @@
     _outerView.frame = CGRectMake(_threshold, self.frame.size.height / 2 - 4, self.frame.size.width - 1 - _threshold * 2, _outerView.image.size.height);
 }
 
+#pragma mark -
+#pragma mark UIGestureRecognizer delegates
+
 - (void)handleMiddlePan:(UIPanGestureRecognizer *)gesture
 {
     if (gesture.state == UIGestureRecognizerStateBegan || gesture.state == UIGestureRecognizerStateChanged) {
         CGPoint translation = [gesture translationInView:self];
-
         CGFloat range = _maxValue - _minValue;
         CGFloat availableWidth = self.frame.size.width - RANGESLIDER_THUMB_SIZE;
 
@@ -187,8 +168,7 @@
         
         _timeLabelLong.text = [NSString stringWithFormat:@"%@  —  %@", [self stringFromTime:_leftValue * _length / 100.0f], [self stringFromTime:_rightValue * _length / 100.0f]];
 
-        if ([_delegate respondsToSelector:@selector(trimControl:didChangeLeftValue:rightValue:)])
-            [_delegate trimControl:self didChangeLeftValue:self.leftValue rightValue:self.rightValue];
+        [self notifyDelegate];
     }
 
     if (gesture.state == UIGestureRecognizerStateEnded)
@@ -216,8 +196,7 @@
 
         _timeLabel.text = [self stringFromTime:_leftValue * _length / 100.0f];
 
-        if ([_delegate respondsToSelector:@selector(trimControl:didChangeLeftValue:rightValue:)])
-            [_delegate trimControl:self didChangeLeftValue:self.leftValue rightValue:self.rightValue];
+        [self notifyDelegate];
     }
 
     if (gesture.state == UIGestureRecognizerStateEnded)
@@ -246,13 +225,45 @@
         
         _timeLabel.text = [self stringFromTime:_rightValue * _length / 100.0f];
 
-        if ([_delegate respondsToSelector:@selector(trimControl:didChangeLeftValue:rightValue:)])
-            [_delegate trimControl:self didChangeLeftValue:self.leftValue rightValue:self.rightValue];
+        [self notifyDelegate];
     }
 
     if (gesture.state == UIGestureRecognizerStateEnded)
         [self hidePopover];
 }
+
+#pragma mark -
+#pragma mark Utilities
+
+- (NSString *)stringFromTime:(NSInteger)time
+{
+    NSInteger minutes = floor(time / 60);
+    NSInteger seconds = time - minutes * 60;
+    NSString *minutesStr = [NSString stringWithFormat:minutes >= 10 ? @"%i" : @"0%i", minutes];
+    NSString *secondsStr = [NSString stringWithFormat:seconds >= 10 ? @"%i" : @"0%i", seconds];
+    return [NSString stringWithFormat:@"%@:%@", minutesStr, secondsStr];
+}
+
+- (void)hidePopover
+{
+    [UIView animateWithDuration:0.3
+                          delay:0
+                        options:UIViewAnimationCurveEaseIn | UIViewAnimationOptionAllowUserInteraction
+                     animations:^(void) {
+                         _popoverView.alpha = 0;
+                         _popoverViewLong.alpha = 0;
+                     }
+                     completion:nil];
+}
+
+- (void)notifyDelegate
+{
+    if ([_delegate respondsToSelector:@selector(trimControl:didChangeLeftValue:rightValue:)])
+        [_delegate trimControl:self didChangeLeftValue:self.leftValue rightValue:self.rightValue];
+}
+
+#pragma mark -
+#pragma mark Properties
 
 - (CGFloat)leftValue
 {
