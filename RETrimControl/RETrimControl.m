@@ -102,30 +102,18 @@
     return self;
 }
 
-- (void)updateTimeLabel:(NSInteger)time
+- (NSString *)stringFromTime:(NSInteger)time
 {
     NSInteger minutes = floor(time / 60);
     NSInteger seconds = time - minutes * 60;
     NSString *minutesStr = [NSString stringWithFormat:minutes >= 10 ? @"%i" : @"0%i", minutes];
     NSString *secondsStr = [NSString stringWithFormat:seconds >= 10 ? @"%i" : @"0%i", seconds];
-    _timeLabel.text = [NSString stringWithFormat:@"%@:%@", minutesStr, secondsStr];
+    return [NSString stringWithFormat:@"%@:%@", minutesStr, secondsStr];
 }
 
 - (void)updateLongTimeLabel:(NSInteger)timeStart timeEnd:(NSInteger)timeEnd
 {
-    NSInteger minutes = floor(timeStart / 60);
-    NSInteger seconds = timeStart - minutes * 60;
-    NSString *minutesStr = [NSString stringWithFormat:minutes >= 10 ? @"%i" : @"0%i", minutes];
-    NSString *secondsStr = [NSString stringWithFormat:seconds >= 10 ? @"%i" : @"0%i", seconds];
-    NSString *start = [NSString stringWithFormat:@"%@:%@", minutesStr, secondsStr];
-
-    minutes = floor(timeEnd / 60);
-    seconds = timeEnd - minutes * 60;
-    minutesStr = [NSString stringWithFormat:minutes >= 10 ? @"%i" : @"0%i", minutes];
-    secondsStr = [NSString stringWithFormat:seconds >= 10 ? @"%i" : @"0%i", seconds];
-    NSString *end = [NSString stringWithFormat:@"%@:%@", minutesStr, secondsStr];
-
-    _timeLabelLong.text = [NSString stringWithFormat:@"%@  —  %@", start, end];
+    _timeLabelLong.text = [NSString stringWithFormat:@"%@  —  %@", [self stringFromTime:timeStart], [self stringFromTime:timeEnd]];
 }
 
 - (void)layoutSubviews
@@ -191,9 +179,8 @@
         CGRect f = _popoverViewLong.frame;
         f.origin.x = _leftThumbView.frame.origin.x - 34 + floor((_rightThumbView.frame.origin.x - _leftThumbView.frame.origin.x) / 2);
         _popoverViewLong.frame = f;
-
-
-        [self updateLongTimeLabel:_leftValue * _length / 100 timeEnd:_rightValue * _length / 100];
+        
+        _timeLabelLong.text = [NSString stringWithFormat:@"%@  —  %@", [self stringFromTime:_leftValue * _length / 100.0f], [self stringFromTime:_rightValue * _length / 100.0f]];
 
         if ([_delegate respondsToSelector:@selector(trimControl:didChangeLeftValue:rightValue:)])
             [_delegate trimControl:self didChangeLeftValue:self.leftValue rightValue:self.rightValue];
@@ -230,7 +217,8 @@
         frame.origin.x = _leftThumbView.frame.origin.x - 9;
         _popoverView.frame = frame;
 
-        [self updateTimeLabel:_leftValue * _length / 100.0f];
+       // [self updateTimeLabel:_leftValue * _length / 100.0f];
+        _timeLabel.text = [self stringFromTime:_leftValue * _length / 100.0f];
 
         if ([_delegate respondsToSelector:@selector(trimControl:didChangeLeftValue:rightValue:)])
             [_delegate trimControl:self didChangeLeftValue:self.leftValue rightValue:self.rightValue];
@@ -267,8 +255,8 @@
         CGRect frame = _popoverView.frame;
         frame.origin.x = _rightThumbView.frame.origin.x - 9;
         _popoverView.frame = frame;
-
-        [self updateTimeLabel:_rightValue * _length / 100.0f];
+        
+        _timeLabel.text = [self stringFromTime:_rightValue * _length / 100.0f];
 
         if ([_delegate respondsToSelector:@selector(trimControl:didChangeLeftValue:rightValue:)])
             [_delegate trimControl:self didChangeLeftValue:self.leftValue rightValue:self.rightValue];
