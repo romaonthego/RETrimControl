@@ -138,13 +138,8 @@
     CGFloat left = floorf((_leftValue - _minValue) / range * availableWidth);
     CGFloat right = floorf((_rightValue - _minValue) / range * availableWidth);
 
-    if (isnan(left)) {
-        left = 0;
-    }
-
-    if (isnan(right)) {
-        right = 0;
-    }
+    if (isnan(left)) left = 0;
+    if (isnan(right)) right = 0;
 
     _leftThumbView.center = CGPointMake(inset + left, 14);
     _rightThumbView.center = CGPointMake(inset + right, 14);
