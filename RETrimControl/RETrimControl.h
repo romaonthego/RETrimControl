@@ -24,6 +24,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RETrimPopover.h"
 
 @protocol RETrimControlDelegate;
 
@@ -33,9 +34,11 @@
     UIView *_sliderMiddleView;
     UIImageView *_leftThumbView;
     UIImageView *_rightThumbView;
-    UIView *_popoverView;
+    
+    RETrimPopover *_leftPopover;
+    RETrimPopover *_rightPopover;
+    
     UIView *_popoverViewLong;
-    UILabel *_timeLabel;
     UILabel *_timeLabelLong;
     NSInteger _maxValue;
     NSInteger _minValue;

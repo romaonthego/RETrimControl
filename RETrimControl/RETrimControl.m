@@ -77,16 +77,11 @@
         UIPanGestureRecognizer *rightPan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleRightPan:)];
         [_rightThumbView addGestureRecognizer:rightPan];
 
-        _popoverView = [[UIView alloc] initWithFrame:CGRectMake(-9, -28, 40, 28)];
-        _popoverView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"RETrimControl.bundle/Popover"]];
-        _timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 6, 40, 10)];
-        _timeLabel.font = [UIFont boldSystemFontOfSize:10];
-        _timeLabel.backgroundColor = [UIColor clearColor];
-        _timeLabel.textColor = [UIColor whiteColor];
-        _timeLabel.textAlignment = UITextAlignmentCenter;
-        [_popoverView addSubview:_timeLabel];
-        _popoverView.alpha = 0;
-        [self addSubview:_popoverView];
+        _leftPopover = [[RETrimPopover alloc] initWithFrame:CGRectMake(-9, -28, 40, 28)];
+        [self addSubview:_leftPopover];
+        
+        _rightPopover = [[RETrimPopover alloc] initWithFrame:CGRectMake(-9, -28, 40, 28)];
+        [self addSubview:_rightPopover];
 
         _popoverViewLong = [[UIView alloc] initWithFrame:CGRectMake(-9, -28, 90, 28)];
         _popoverViewLong.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"RETrimControl.bundle/PopoverLong"]];
@@ -101,6 +96,8 @@
     }
     return self;
 }
+
+
 
 - (void)layoutSubviews
 {
@@ -172,11 +169,11 @@
     }
 
     if (gesture.state == UIGestureRecognizerStateEnded)
-        [self hidePopover];
+        [self hidePopover:_popoverViewLong];
 }
 
 - (void)handleLeftPan:(UIPanGestureRecognizer *)gesture
-{
+{       
     if (gesture.state == UIGestureRecognizerStateBegan || gesture.state == UIGestureRecognizerStateChanged) {
         CGPoint translation = [gesture translationInView:self];
         CGFloat range = _maxValue - _minValue;
@@ -189,18 +186,18 @@
 
         [self setNeedsLayout];
 
-        _popoverView.alpha = 1;
-        CGRect frame = _popoverView.frame;
+        _leftPopover.alpha = 1;
+        CGRect frame = _leftPopover.frame;
         frame.origin.x = _leftThumbView.frame.origin.x - 9;
-        _popoverView.frame = frame;
+        _leftPopover.frame = frame;
 
-        _timeLabel.text = [self stringFromTime:_leftValue * _length / 100.0f];
+        _leftPopover.timeLabel.text = [self stringFromTime:_leftValue * _length / 100.0f];
 
         [self notifyDelegate];
     }
 
     if (gesture.state == UIGestureRecognizerStateEnded)
-        [self hidePopover];
+        [self hidePopover:_leftPopover];
 }
 
 - (void)handleRightPan:(UIPanGestureRecognizer *)gesture
@@ -218,18 +215,18 @@
 
         [self setNeedsLayout];
 
-        _popoverView.alpha = 1;
-        CGRect frame = _popoverView.frame;
+        _rightPopover.alpha = 1;
+        CGRect frame = _rightPopover.frame;
         frame.origin.x = _rightThumbView.frame.origin.x - 9;
-        _popoverView.frame = frame;
+        _rightPopover.frame = frame;
         
-        _timeLabel.text = [self stringFromTime:_rightValue * _length / 100.0f];
+        _rightPopover.timeLabel.text = [self stringFromTime:_rightValue * _length / 100.0f];
 
         [self notifyDelegate];
     }
 
     if (gesture.state == UIGestureRecognizerStateEnded)
-        [self hidePopover];
+        [self hidePopover:_rightPopover];
 }
 
 #pragma mark -
@@ -244,14 +241,14 @@
     return [NSString stringWithFormat:@"%@:%@", minutesStr, secondsStr];
 }
 
-- (void)hidePopover
-{
+- (void)hidePopover:(UIView *)popover
+{    
     [UIView animateWithDuration:0.3
                           delay:0
                         options:UIViewAnimationCurveEaseIn | UIViewAnimationOptionAllowUserInteraction
                      animations:^(void) {
-                         _popoverView.alpha = 0;
-                         _popoverViewLong.alpha = 0;
+
+                         popover.alpha = 0;
                      }
                      completion:nil];
 }

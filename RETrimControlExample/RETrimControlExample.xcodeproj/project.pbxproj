@@ -19,6 +19,7 @@
 		3021106716A9AA7700F82376 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3021106616A9AA7700F82376 /* RootViewController.m */; };
 		3021106C16A9AA8300F82376 /* RETrimControl.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3021106916A9AA8300F82376 /* RETrimControl.bundle */; };
 		3021106D16A9AA8300F82376 /* RETrimControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 3021106B16A9AA8300F82376 /* RETrimControl.m */; };
+		3096640016B04BAA00440203 /* RETrimPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 309663FF16B04BAA00440203 /* RETrimPopover.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,8 @@
 		3021106916A9AA8300F82376 /* RETrimControl.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = RETrimControl.bundle; sourceTree = "<group>"; };
 		3021106A16A9AA8300F82376 /* RETrimControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RETrimControl.h; sourceTree = "<group>"; };
 		3021106B16A9AA8300F82376 /* RETrimControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RETrimControl.m; sourceTree = "<group>"; };
+		309663FE16B04BAA00440203 /* RETrimPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RETrimPopover.h; sourceTree = "<group>"; };
+		309663FF16B04BAA00440203 /* RETrimPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RETrimPopover.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +119,8 @@
 				3021106916A9AA8300F82376 /* RETrimControl.bundle */,
 				3021106A16A9AA8300F82376 /* RETrimControl.h */,
 				3021106B16A9AA8300F82376 /* RETrimControl.m */,
+				309663FE16B04BAA00440203 /* RETrimPopover.h */,
+				309663FF16B04BAA00440203 /* RETrimPopover.m */,
 			);
 			name = RETrimControl;
 			path = ../RETrimControl;
@@ -191,6 +196,7 @@
 				3021105916A9A9C900F82376 /* AppDelegate.m in Sources */,
 				3021106716A9AA7700F82376 /* RootViewController.m in Sources */,
 				3021106D16A9AA8300F82376 /* RETrimControl.m in Sources */,
+				3096640016B04BAA00440203 /* RETrimPopover.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +307,7 @@
 				3021106416A9A9CA00F82376 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
