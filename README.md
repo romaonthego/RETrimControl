@@ -34,7 +34,7 @@ Edit your Podfile and add RETrimControl:
 ``` bash
 $ edit Podfile
 platform :ios, '5.0'
-pod 'RETrimControl', '~> 1.0'
+pod 'RETrimControl', '~> 1.1'
 ```
 
 Install into your Xcode project:
@@ -69,6 +69,14 @@ trimControl.delegate = self;
 {
     NSLog(@"Left = %f, right = %f", leftValue, rightValue);
 }
+```
+
+## Customization
+
+You can assign your custom resource bundle on control initialization:
+
+``` objective-c
+RETrimControl *trimControl = [[RETrimControl alloc] initWithFrame:CGRectMake(0, 0, 300, 28) resourceBundle:@"CustomResources.bundle"];
 ```
 
 ## Contact
