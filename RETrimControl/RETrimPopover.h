@@ -12,4 +12,6 @@
 
 @property (strong, nonatomic) UILabel *timeLabel;
 
+- (id)initWithFrame:(CGRect)frame resourceBundle:(NSString *)resourceBundle;
+
 @end
