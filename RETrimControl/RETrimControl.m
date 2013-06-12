@@ -135,6 +135,17 @@
 }
 
 #pragma mark -
+#pragma mark Styling
+
+- (void)setFont:(UIFont *)font
+{
+    _font = font;
+    _timeLabelLong.font = font;
+    _rightPopover.timeLabel.font = font;
+    _leftPopover.timeLabel.font = font;
+}
+
+#pragma mark -
 #pragma mark UIGestureRecognizer delegates
 
 - (void)handleMiddlePan:(UIPanGestureRecognizer *)gesture
