@@ -153,6 +153,22 @@
     _leftPopover.timeLabel.textColor = textColor;
 }
 
+- (void)setTextBackgroundColor:(UIColor *)textBackgroundColor
+{
+    _textBackgroundColor = textBackgroundColor;
+    _timeLabelLong.backgroundColor = textBackgroundColor;
+    _rightPopover.timeLabel.backgroundColor = textBackgroundColor;
+    _leftPopover.timeLabel.backgroundColor = textBackgroundColor;
+}
+
+- (void)setTextVerticalOffset:(NSInteger)textVerticalOffset
+{
+    _textVerticalOffset = textVerticalOffset;
+    _timeLabelLong.frame = CGRectMake(0, 6 + textVerticalOffset, 90, 10);
+    _rightPopover.timeLabel.frame = CGRectMake(0, 6 + textVerticalOffset, 40, 10);
+    _leftPopover.timeLabel.frame = CGRectMake(0, 6 + textVerticalOffset, 40, 10);
+}
+
 #pragma mark -
 #pragma mark UIGestureRecognizer delegates
 

@@ -55,6 +55,7 @@
 @property (strong, readwrite, nonatomic) UIFont *font;
 @property (strong, readwrite, nonatomic) UIColor *textColor;
 @property (strong, readwrite, nonatomic) UIColor *textBackgroundColor;
+@property (assign, readwrite, nonatomic) NSInteger textVerticalOffset;
 
 - (id)initWithFrame:(CGRect)frame resourceBundle:(NSString *)resourceBundle;
 
