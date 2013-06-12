@@ -145,6 +145,14 @@
     _leftPopover.timeLabel.font = font;
 }
 
+- (void)setTextColor:(UIColor *)textColor
+{
+    _textColor = textColor;
+    _timeLabelLong.textColor = textColor;
+    _rightPopover.timeLabel.textColor = textColor;
+    _leftPopover.timeLabel.textColor = textColor;
+}
+
 #pragma mark -
 #pragma mark UIGestureRecognizer delegates
 

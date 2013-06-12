@@ -53,6 +53,8 @@
 @property (assign, readwrite, nonatomic) NSInteger threshold;
 @property (strong, readonly, nonatomic) NSString *resourceBundle;
 @property (strong, readwrite, nonatomic) UIFont *font;
+@property (strong, readwrite, nonatomic) UIColor *textColor;
+@property (strong, readwrite, nonatomic) UIColor *textBackgroundColor;
 
 - (id)initWithFrame:(CGRect)frame resourceBundle:(NSString *)resourceBundle;
 
