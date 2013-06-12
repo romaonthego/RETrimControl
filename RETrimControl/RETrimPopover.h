@@ -10,7 +10,7 @@
 
 @interface RETrimPopover : UIView
 
-@property (strong, nonatomic) UILabel *timeLabel;
+@property (strong, readonly, nonatomic) UILabel *timeLabel;
 
 - (id)initWithFrame:(CGRect)frame resourceBundle:(NSString *)resourceBundle;
 
