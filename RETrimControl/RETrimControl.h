@@ -46,11 +46,11 @@
     CGFloat _rightValue;
 }
 
-@property (assign, nonatomic) id<RETrimControlDelegate> delegate;
-@property (assign, nonatomic) NSInteger length;
-@property (readonly, nonatomic) CGFloat leftValue;
-@property (readonly, nonatomic) CGFloat rightValue;
-@property (assign, nonatomic) NSInteger threshold;
+@property (weak, readwrite, nonatomic) id<RETrimControlDelegate> delegate;
+@property (assign, readwrite, nonatomic) NSInteger length;
+@property (assign, readonly, nonatomic) CGFloat leftValue;
+@property (assign, readonly, nonatomic) CGFloat rightValue;
+@property (assign, readwrite, nonatomic) NSInteger threshold;
 @property (strong, readonly, nonatomic) NSString *resourceBundle;
 
 - (id)initWithFrame:(CGRect)frame resourceBundle:(NSString *)resourceBundle;
