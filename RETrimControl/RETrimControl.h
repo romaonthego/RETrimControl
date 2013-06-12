@@ -52,6 +52,7 @@
 @property (assign, readonly, nonatomic) CGFloat rightValue;
 @property (assign, readwrite, nonatomic) NSInteger threshold;
 @property (strong, readonly, nonatomic) NSString *resourceBundle;
+@property (strong, readwrite, nonatomic) UIFont *font;
 
 - (id)initWithFrame:(CGRect)frame resourceBundle:(NSString *)resourceBundle;
 
