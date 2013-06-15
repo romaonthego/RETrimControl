@@ -2,7 +2,7 @@
 
 Audio trim control, similar to the one seen in default iPhone Voice Memos app.
 
-![Screenshot of RETrimControl](https://github.com/romaonthego/RETrimControl/raw/master/Screenshot.png "RETrimControl Screenshot")
+<img src="https://github.com/romaonthego/RETrimControl/raw/master/Screenshot.png" alt="RETrimControl Screenshot" width="320" height="480" />
 
 ## Requirements
 * Xcode 4.6 or higher
