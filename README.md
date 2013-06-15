@@ -34,7 +34,7 @@ Edit your Podfile and add RETrimControl:
 ``` bash
 $ edit Podfile
 platform :ios, '5.0'
-pod 'RETrimControl', '~> 1.1'
+pod 'RETrimControl', '~> 1.2'
 ```
 
 Install into your Xcode project:
