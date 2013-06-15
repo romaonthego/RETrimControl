@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.source = {:git => 'https://github.com/romaonthego/RETrimControl.git', :tag => '1.2'}
   s.license = {:type => "MIT", :file => "LICENSE"}
 
-  s.platform = :ios
+  s.platform = :ios, '5.0'
   s.requires_arc = true
   s.source_files = 'RETrimControl'
   s.public_header_files = 'RETrimControl/*.h'
